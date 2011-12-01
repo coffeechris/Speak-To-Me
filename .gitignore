@@ -1,0 +1,7 @@
+.classpath
+.project
+.settings/
+bin/
+war/WEB-INF/classes/
+VocalSearch.war
+

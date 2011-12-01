@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans 	xmlns="http://www.springframework.org/schema/beans" 
+    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    	xmlns:p="http://www.springframework.org/schema/p" 
+    	xmlns:context="http://www.springframework.org/schema/context"
+    	xsi:schemaLocation="
+        	http://www.springframework.org/schema/beans 
+        	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        	http://www.springframework.org/schema/context 
+        	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+	<!-- These two beans enable controller annotations -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+        <property name="detectHandlersInAncestorContexts" value="true"/>
+    </bean>
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+    
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+        <property name="prefix" value="/WEB-INF/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>        
+    </bean>
+    
+    <bean id="abstractController" abstract="true">
+    	<property name="userIdCookieName" value="uid" />
+    	<property name="taskOrderCookieName" value="torder" />
+    	<property name="taskIndexCookieName" value="tindex" />
+    </bean>
+    
+    <bean id="searchController" class="org.cmi.wikisearch.controllers.SearchController"
+    		parent="abstractController">
+    	<property name="resultsLimit" value="1000" />
+    	<property name="resultsPerPage" value="6" />
+    	<property name="searchService" ref="searchService" />
+    	<property name="taskService" ref="taskService" />
+    	<property name="searchQueryLogger" ref="searchQueryLogger" />
+    	<property name="interactionLogger" ref="interactionLogger" />
+        <property name="searchView" value="basic-search"/>
+        <property name="vocalSearchView" value="vocal-search-interface-2" />
+        <property name="searchResultsView" value="search-results" />
+    </bean>
+
+	<bean id="questionnaireController" class="org.cmi.wikisearch.controllers.QuestionnaireController"
+			parent="abstractController">
+		<property name="consentView" value="consent" />
+		<property name="preStudyView" value="pre-study" />
+		<property name="postStudyView" value="post-study" />
+		<property name="endStudyView" value="end-study" />
+		<property name="taskService" ref="taskService" />
+		<property name="userIdService" ref="userIdService" />
+		<property name="preStudyService" ref="preStudyService" />
+		<property name="postStudyService" ref="postStudyService" />
+		<property name="pretaskQuestionnaireServices">
+			<list>
+				<ref bean="pretask1Service" />
+				<ref bean="pretask2Service" />
+				<ref bean="pretask3Service" />
+			</list>
+		</property>
+		<property name="posttaskQuestionnaireServices">
+			<list>
+				<ref bean="posttask1Service" />
+				<ref bean="posttask2Service" />
+				<ref bean="posttask3Service" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="documentController" class="org.cmi.wikisearch.controllers.DocumentController"
+			parent="abstractController">
+		<property name="docView" value="doc-view" />
+		<property name="documentService" ref="documentService" />
+		<property name="taskService" ref="taskService" />
+		<property name="interactionLogger" ref="interactionLogger" />
+	</bean>
+</beans>

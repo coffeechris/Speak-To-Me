@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article>
+<name id="1018">Algebraically closed field</name>
+
+<conversionwarning>0</conversionwarning><body>
+In 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="18831.xml">
+mathematics
+</collectionlink>, a 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="10603.xml">
+field
+</collectionlink><math>
+F
+</math> is said to be 
+<emph3>
+algebraically closed
+</emph3> if every 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="23000.xml">
+polynomial
+</collectionlink> in one variable of degree at least 1, with 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="51203.xml">
+coefficient
+</collectionlink>s in 
+<math>
+F
+</math>, has a 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="264210.xml">
+zero
+</collectionlink> (
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="264210.xml">
+root
+</collectionlink>) in 
+<math>
+F
+</math>.
+As an example, the field of 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="25697.xml">
+real number
+</collectionlink>s is not algebraically closed, because the polynomial equation
+<indentation1>
+<math>
+3x^2 + 1 = 0
+</math></indentation1><p>
+has no solution in real numbers, even though both of its coefficients (3 and 1) are real. By contrast, the field of 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="5826.xml">
+complex number
+</collectionlink>s is algebraically closed: this is stated by the 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="51414.xml">
+fundamental theorem of algebra
+</collectionlink>. Another example of an algebraically closed field is the field of 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="1158.xml">
+algebraic number
+</collectionlink>s.
+</p><p>
+Given a field 
+<math>
+F
+</math>, the assertion â
+<math>
+F
+</math> is algebraically closedâ is equivalent to each one of the following ones:
+</p><normallist>
+<item>
+ Every polynomial in one variable of degree at least 1, with 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="51203.xml">
+coefficient
+</collectionlink>s in 
+<math>
+F
+</math>, 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="82341.xml">
+splits into linear factors
+</collectionlink>.
+</item><item>
+ The field 
+<math>
+F
+</math> has no proper 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="2125.xml">
+algebraic extension
+</collectionlink>.
+</item></normallist><normallist>
+<item>
+ For each natural number 
+<math>
+n
+</math>, every 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="18102.xml">
+linear map
+</collectionlink> from 
+<math>
+F^n
+</math> into itself has some 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="2161429.xml">
+eigenvector
+</collectionlink>.
+</item><item>
+ Every 
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="361210.xml">
+rational function
+</collectionlink> in one variable 
+<math>
+x
+</math>, with coefficients in 
+<math>
+F
+</math>, can be written as the sum of a polynomial function with rational functions of the form 
+<math>
+a/(x-b)^n
+</math>, where 
+<math>
+n
+</math> is a natural number, and 
+<math>
+a
+</math> and 
+<math>
+b
+</math> are elements of 
+<math>
+F
+</math>.
+</item></normallist><p>
+Every field 
+<math>
+F
+</math> has an "
+<collectionlink xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="3129.xml">
+algebraic closure
+</collectionlink>", which is the smallest algebraically closed field of which 
+<math>
+F
+</math> is a subfield.
+</p><section>
+<title>References </title><normallist>
+<item>
+ S. Lang, 
+<emph2>
+Algebra
+</emph2>, Springer-Verlag, 2004, ISBN 0-387-95385-X
+</item><item>
+ B.L. van der Waerden, 
+<emph2>
+Algebra I
+</emph2>, Springer-Verlag, 1991, ISBN 0-387-97424-5
+</item></normallist><languagelink lang="de">
+Algebraisch abgeschlossen
+</languagelink><languagelink lang="es">
+Cuerpo algebraicamente cerrado
+</languagelink><languagelink lang="fr">
+Corps algébriquement clos
+</languagelink><languagelink lang="it">
+Campo algebricamente chiuso
+</languagelink><languagelink lang="ru">
+Алгебраически замкнутое поле
+</languagelink></section>
+</body>
+
+</article>
+

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans 	xmlns="http://www.springframework.org/schema/beans" 
+    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    	xmlns:p="http://www.springframework.org/schema/p" 
+    	xmlns:context="http://www.springframework.org/schema/context"
+    	xsi:schemaLocation="
+        	http://www.springframework.org/schema/beans 
+        	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        	http://www.springframework.org/schema/context 
+        	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+		<list>
+		<value>file:/opt/configs/VocalSearch/vocalsearch.properties</value>
+		</list>	
+		</property>
+	</bean>
+	        	
+	<bean id="searchService" class="org.cmi.wikisearch.services.LuceneSearchService">
+		<property name="fields">
+			<list>
+			<value>title</value>
+			<value>contents</value>
+			</list>
+		</property>
+		<property name="isearcher">
+			<bean class="org.apache.lucene.search.IndexSearcher">
+				<constructor-arg value="${lucene-index}" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="documentService" class="org.cmi.wikisearch.services.DocumentServiceXSLImpl">
+		<property name="corpusPath" value="${corpusPath}" />
+		<property name="xslPath" value="${xslPath}" />	
+	</bean>
+	
+	<bean id="userIdService" class="org.cmi.wikisearch.services.UserIdService">
+		<property name="userIdDao" ref="userIdDao" />
+	</bean>
+	<bean id="userIdDao" class="org.cmi.wikisearch.dao.UserIdFileDao">
+		<property name="userIdFile" value="${user-id-file}" />
+	</bean>
+	  
+	<bean id="preStudyService" class="org.cmi.wikisearch.services.QuestionnaireService">
+		<property name="questionnaireDao" ref="preStudyDao" />
+	</bean>
+	<bean id="preStudyDao" class="org.cmi.wikisearch.dao.QuestionnaireFileDao">
+		<property name="storagePath" value="${prestudy-path}" />
+	</bean>
+	<bean id="postStudyService" class="org.cmi.wikisearch.services.QuestionnaireService">
+		<property name="questionnaireDao" ref="postStudyDao" />
+	</bean>
+	<bean id="postStudyDao" class="org.cmi.wikisearch.dao.QuestionnaireFileDao">
+		<property name="storagePath" value="${poststudy-path}" />
+	</bean>
+	<bean id="pretask1Service" class="org.cmi.wikisearch.services.QuestionnaireService">
+		<property name="questionnaireDao" ref="pretask1Dao" />
+	</bean>
+	<bean id="pretask1Dao" class="org.cmi.wikisearch.dao.QuestionnaireFileDao">
+		<property name="storagePath" value="${pretask1-path}" />
+	</bean>
+	<bean id="pretask2Service" class="org.cmi.wikisearch.services.QuestionnaireService">
+		<property name="questionnaireDao" ref="pretask2Dao" />
+	</bean>
+	<bean id="pretask2Dao" class="org.cmi.wikisearch.dao.QuestionnaireFileDao">
+		<property name="storagePath" value="${pretask2-path}" />
+	</bean>
+	<bean id="pretask3Service" class="org.cmi.wikisearch.services.QuestionnaireService">
+		<property name="questionnaireDao" ref="pretask3Dao" />
+	</bean>
+	<bean id="pretask3Dao" class="org.cmi.wikisearch.dao.QuestionnaireFileDao">
+		<property name="storagePath" value="${pretask3-path}" />
+	</bean>
+	<bean id="posttask1Service" class="org.cmi.wikisearch.services.QuestionnaireService">
+		<property name="questionnaireDao" ref="posttask1Dao" />
+	</bean>
+	<bean id="posttask1Dao" class="org.cmi.wikisearch.dao.QuestionnaireFileDao">
+		<property name="storagePath" value="${posttask1-path}" />
+	</bean>
+	<bean id="posttask2Service" class="org.cmi.wikisearch.services.QuestionnaireService">
+		<property name="questionnaireDao" ref="posttask2Dao" />
+	</bean>
+	<bean id="posttask2Dao" class="org.cmi.wikisearch.dao.QuestionnaireFileDao">
+		<property name="storagePath" value="${posttask2-path}" />
+	</bean>
+	<bean id="posttask3Service" class="org.cmi.wikisearch.services.QuestionnaireService">
+		<property name="questionnaireDao" ref="posttask3Dao" />
+	</bean>
+	<bean id="posttask3Dao" class="org.cmi.wikisearch.dao.QuestionnaireFileDao">
+		<property name="storagePath" value="${posttask3-path}" />
+	</bean>
+	 
+	<bean id="searchQueryLogger" class="org.cmi.wikisearch.services.UserLoggerService">
+		<property name="userLoggerDao">
+			<bean class="org.cmi.wikisearch.dao.UserLoggerFileDao">
+				<property name="logPath" value="${searchLogger-path}" />
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="interactionLogger" class="org.cmi.wikisearch.services.UserLoggerService">
+		<property name="userLoggerDao">
+			<bean class="org.cmi.wikisearch.dao.UserLoggerFileDao">
+				<property name="logPath" value="${interactionLogger-path}" />
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="taskService" class="org.cmi.wikisearch.services.TaskService">
+		<property name="taskDao" ref="taskDao" />
+	</bean>
+
+	<bean id="taskDao" class="org.cmi.wikisearch.dao.TaskFileDao"> 
+		<property name="taskOrderDataFileName" value="${task-orders}" />
+		<property name="taskData">
+			<map>
+				<entry key="1">
+					<bean class="org.cmi.wikisearch.beans.Task">
+						<property name="minutes" value="10" />
+						<property name="seconds" value="0" />
+						<property name="desc">
+							<value><![CDATA[Task 1 - hello world]]></value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="2">
+					<bean class="org.cmi.wikisearch.beans.Task">
+						<property name="minutes" value="10" />
+						<property name="seconds" value="0" />
+						<property name="desc">
+							<value><![CDATA[Task 2 - the second task]]></value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="3">
+					<bean class="org.cmi.wikisearch.beans.Task">
+						<property name="minutes" value="10" />
+						<property name="seconds" value="0" />
+						<property name="desc">
+							<value><![CDATA[Task 3 - only seconds]]></value>
+						</property>
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+</beans>
