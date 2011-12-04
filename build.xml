@@ -15,7 +15,7 @@
         <!-- We need the servlet API classes: -->
         <!--  * for Tomcat 5/6 use servlet-api.jar -->
         <!--  * for other app servers - check the docs -->
-        <fileset dir="${appserver.home}/common/lib">
+        <fileset dir="${appserver.lib}">
             <include name="servlet-api.jar"/>
         </fileset>
         <pathelement path="${build.dir}"/>
@@ -32,7 +32,8 @@
         <echo message="deploy    --> Deploy application as directory"/>
         <echo message="deploywar --> Deploy application as a WAR file"/>
     	<echo message="clean     --> Clean output directories"/>
-    	<echo message="undeploy  --> Un-Deploy application"/>
+        <echo message="undeploy  --> Un-Deploy application"/>
+        <echo message="tests     --> Run unit tests"/>
         <echo message="install   --> Install application in Tomcat"/>
         <echo message="reload    --> Reload application in Tomcat"/>
         <echo message="start     --> Start Tomcat application"/>
@@ -59,17 +60,16 @@
     </target>
 
     <target name="deploywar" depends="build" description="Deploy application as a WAR file">
-        <war destfile="${name}.war"
-             webxml="${web.dir}/WEB-INF/web.xml">
+        <war destfile="${name}.war" webxml="${web.dir}/WEB-INF/web.xml">
             <fileset dir="${web.dir}">
                 <include name="**/*.*"/>
             </fileset>
         </war>
-        <copy todir="${deploy.path}" preservelastmodified="true">
+        <move todir="${deploy.path}" preservelastmodified="true">
             <fileset dir=".">
-                <include name="*.war"/>
+                <include name="${name}.war"/>
             </fileset>
-        </copy>
+        </move>
     </target>
 	
 	<target name="clean" description="Clean output directories">
