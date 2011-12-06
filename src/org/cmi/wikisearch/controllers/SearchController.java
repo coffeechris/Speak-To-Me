@@ -86,7 +86,7 @@ public class SearchController {
 		//check to see if the end task button was pressed
 		if (request.getParameter("et") != null){		
 			//log end of task timestamp
-			
+			endTask(request);
 			return new ModelAndView("redirect:/post-task.htm");
 		}
 		

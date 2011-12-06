@@ -113,7 +113,7 @@ function endTask() {
 		    	<tr>
     				<td align="right">
     				    Time: <input id="taskTimer" type="text" style="width: 46px"/> 
-			    	    <button onclick="endTask();document.location='vocal-search-interface.htm?et=1'">End</button> 
+			    	    <button onclick="document.location='vocal-search-interface.htm?et=1'">End</button> 
 			   		</td>
     			</tr>
 		    	<tr>
